@@ -1,0 +1,1834 @@
+/* Table of Content
+==================================================
+  #Custom Fonts
+  #Site Styles
+    - Typography
+  #Header
+    - Text Based Logo
+    - Image Based Logo
+    - Main Navigation for Mobile & Tablet
+  #Slider
+  #Content
+  #Blog
+    - Blog Standard Layout
+    - Blog Full Width
+    - Blog Two Columns
+    - Blog Three Columns
+    - Post
+    - Comment
+  #Sidebar
+    - Popular Posts
+    - Tags Cloud
+    - Flickr
+  #Gallery
+  #Contacts
+    - Google Map
+    - Contact Information
+    - Contact Form
+  #Coming Soon
+  #Pages
+    - About Us
+    - Special Offers
+    - Eco Technology
+    - Single Member
+    - Products
+    - Single Product
+  #Footer
+    - Widgets in Footer Area
+    - Social Widget
+    - Twitter Feed
+    - Copyright
+  #Misc
+*/
+
+
+//
+// #Custom Fonts
+// --------------------------------------------------
+@font-face {
+  font-family: 'Bebas';
+  src: url('../fonts/bebasneue-webfont.eot');
+  src: url('../fonts/bebasneue-webfont.eot?#iefix') format('embedded-opentype'),
+     url('../fonts/bebasneue-webfont.woff') format('woff'),
+     url('../fonts/bebasneue-webfont.ttf') format('truetype'),
+     url('../fonts/bebasneue-webfont.svg#bebas_neueregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Google Web Fonts
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:400,300,700);
+//font-family: 'Titillium Web', sans-serif;
+
+@import url(http://fonts.googleapis.com/css?family=Architects+Daughter);
+//font-family: 'Architects Daughter', cursive;
+
+
+//
+// Typography
+// --------------------------------------------------
+.bold {
+
+  > a {
+    color: @text-color;
+
+    &:hover {
+      color: @brand-secondary;
+    }
+  }
+}
+
+
+
+//
+// #Header
+// --------------------------------------------------
+.top-wrapper {
+  position: relative;
+  background-image: @header-bg-image;
+  background-color: @header-bg-color;
+  background-position: @header-bg-position;
+  background-attachment: @header-bg-attachment;
+  background-size: @header-bg-image-size;
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-size: @header-bg-image-retina-size;
+    background-image: @header-bg-image-retina;
+  }
+  
+  // Header splash
+  &:before {
+    background: url(../images/header-light.png) 50% 0 no-repeat;
+  }
+}
+
+// Text Based Logo
+.navbar-default .navbar-brand {
+  width: @navbar-brand-width*1px;
+  height: @navbar-brand-height*1px;
+  border-radius: @border-radius-small;
+  background: @brand-primary;
+  color: @brand-default;
+  font-family: 'Bebas';
+  line-height: @navbar-brand-height*1px;
+  
+  //Logo Top triangle
+  &:before {
+    border-left: @navbar-brand-width/2*1px solid rgba(255,255,255,0);
+    border-right: @navbar-brand-width/2*1px solid rgba(255,255,255,0);
+    border-top: @navbar-brand-height/2*1px solid rgba(255,255,255,.1);
+  }
+  
+  //Logo Bottom triangle
+  &:after {
+    border-left: @navbar-brand-width/2*1px solid rgba(0,0,0,0);
+    border-right: @navbar-brand-width/2*1px solid rgba(0,0,0,0);
+    border-bottom: @navbar-brand-height/2*1px solid rgba(0,0,0,.03);
+  }
+
+  //Logo Active State
+  &:active {
+    color: @brand-default;
+  }
+
+  &:hover {
+    color: @brand-default;
+    background: darken(@brand-primary,5%);
+  }
+}
+
+// Image Based Logo
+.logo-standard {
+
+  img {
+    width: @navbar-brand-width*1px;
+    height: @navbar-brand-height*1px;
+  }
+}
+.logo-retina {
+
+  img {
+    width: @navbar-brand-width*1px;
+    height: @navbar-brand-height*1px;
+  }
+}
+
+
+
+// Main Navigation for Mobile & Tablet
+.flexnav {
+
+  li {
+    background: @navbar-link-bg;
+
+    a {
+      color: #222222;
+      background: @navbar-link-bg;
+    }
+    
+    // Submenu
+    ul {
+
+      li {
+
+        a {
+          border-bottom-color: @brand-default;
+          background: @text-color;
+          color: @brand-default;
+        }
+
+        ul {
+
+          li {
+            background: #bfbfbc;
+          }
+        }
+      }
+    }
+  }
+}
+
+.touch-button {
+
+  .navicon {
+
+      &:before {
+        background: @text-color;
+      }
+      &:after {
+        background: @text-color;
+      }
+  }
+  
+  // Active State
+  &.active {
+    background: @text-color;
+
+    .navicon:before {
+      background: @brand-default;
+    }
+  }
+}
+
+
+// Main Navigation for Desktop
+@media (min-width: 992px) {
+  
+  .flexnav {
+    min-height: @navbar-brand-height*1px;
+
+    > li {
+
+      &.active,
+      &.current-menu-parent {
+
+        > a {
+          background: @navbar-link-active-bg;
+        }
+      }
+
+      > a {
+        height: @navbar-brand-height*1px;
+        line-height: @navbar-brand-height*1px;
+
+      // Bottom border
+      &:before {
+        background: @brand-primary;
+      }
+
+      // Ellipsis under the link text
+      &:after {
+        color: @brand-primary;
+      }
+      
+
+      &:hover {
+        text-decoration: none;
+        background: @navbar-link-hover-bg;
+        color: @brand-primary;
+          
+        // Show border on hover
+        &:before {
+          bottom: 0;
+        }
+
+        // Show ellipsis on hover
+        &:after {
+          bottom: (@navbar-brand-height/2)-14px;
+        }
+      }
+
+      }
+
+      // Submenu Level-1
+      > ul {
+
+        li {
+          width: 100%;
+        }
+      }
+
+      // Submenus Style
+      ul {
+        border-bottom: 5px solid @brand-primary;
+
+        li {
+
+          a {
+            color: @nav-dropdown-link-color;
+            background: rgba(red(@nav-dropdown-bg), green(@nav-dropdown-bg), blue(@nav-dropdown-bg), .9);
+
+            &:hover {
+              color: @nav-dropdown-link-hover-color;
+            }
+          }
+
+          &.active > a {
+            color: @nav-dropdown-link-hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+//
+// #Slider
+// --------------------------------------------------
+.tp-banner-holder {
+
+  &:before,
+  &:after {
+    border-top: 1px solid @body-bg;
+    border-bottom: 1px solid @body-bg;
+  }
+}
+
+
+
+//
+// #Content
+// --------------------------------------------------
+.main-content {
+  padding: 75px 0 80px 0;
+  overflow: hidden;
+}
+
+
+//
+// #Blog
+// --------------------------------------------------
+
+
+// Post
+.post {
+  background: @post-bg;
+  border: 1px solid @post-border-color;
+
+  // Sticky
+  &.sticky {
+    background: @post-bg-sticky;
+  }
+  
+  // Thumbnail
+  .thumb {
+
+    > a {
+
+      &:before {
+        background: @post-thumb-hover-bg;
+      }
+    }
+  }
+
+  .post-body {
+    .single-post & {
+      border-bottom: 1px solid @post-border-color;
+    }
+  }
+
+    // Post Date
+    .post-date {
+      color: @post-date-color;
+      font-family: @font-family-alt;
+
+      @media (min-width: 768px) {
+        border-right: 1px solid @post-border-color;
+      }
+    }
+
+    // Post Title
+    .post-title {
+
+      > a {
+        color: @text-color;
+
+        &:hover {
+          color: @link-color;
+        }
+      }
+    }
+
+    // Categories Links
+    .cat-links {
+
+      > a {
+        background: @tag-bg;
+        color: @tag-color;
+        border-radius: @border-radius-small;
+
+        &:hover {
+          background: @tag-bg-hover;
+          color: @tag-color-hover;
+        }
+      }
+    }
+
+  // Post Footer
+  .post-footer {
+
+    .single-post & {
+
+      .post-comments {
+        &:after {
+          background: @text-color;
+        }
+      }
+    }
+  }
+}
+
+// Share Box
+.share-box {
+  border-top: 1px solid @share-border-color;
+  border-bottom: 1px solid @share-border-color;
+
+  .share-box-title {
+    color: @brand-primary;
+  }
+}
+
+// About Author
+.about-author {
+  border-top: 1px solid @share-border-color;
+  border-bottom: 1px solid @share-border-color;
+}
+
+// Images Box
+.img-box {
+  background: @img-box-bg;
+
+  &:before {
+    border-left: 1px solid @img-box-bg;
+    border-right: 2px solid @img-box-bg;
+  }
+  &:after {
+    border-left: 2px solid @img-box-bg;
+    border-right: 1px solid @img-box-bg;
+  }
+}
+  .img-box-inner {
+
+    &:before,
+    &:after {
+      background: @img-box-bg;
+    }
+  }
+
+  .img-list {
+
+    .img-holder {
+
+      &:before {
+        background: @thumbnail-overlay-bg;
+        .opacity(@thumbnail-overlay-bg-opacity);
+      }
+
+      .fa {
+        color: @thumbnail-overlay-bg;
+      }
+    }
+    .img-title {
+      font-family: @font-family-alt;
+      color: @img-box-desc-color;
+      text-shadow: 0 2px 0 rgba(red(@text-color), green(@text-color), blue(@text-color), .5);
+    }
+  }
+
+
+//
+// Comments
+// -----------------------
+.comments-list {
+  
+  .comment-wrap {
+    border: 1px solid @comment-border-color;
+  }
+
+  .bypostauthor > .comment-wrap {
+    background: @comment-post-author-bg;
+  }
+
+  .avatar {
+
+    > img {
+      background: @brand-primary;
+    }
+  }
+
+  .media-heading {
+
+    .comment-meta {
+
+      > a {
+        color: #c2c4b7;
+
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+
+    .reply-btn {
+
+      .btn-default {
+        color: @brand-primary;
+        #gradient > .vertical(@start-color: @body-bg; @end-color: darken(@body-bg,2%));
+
+        &:hover,
+        &:focus {
+          color: @text-color;
+        }
+      }
+    }
+  }
+}
+
+
+//
+// #Sidebar
+// --------------------------------------------------
+
+// Latest Posts
+.widget-posts-list {
+
+  > li {
+
+    .thumb {
+
+      > a:hover > img {
+        background: @thumbnail-bg-hover;
+      }
+    }
+
+    & + li {
+      border-top: 1px solid @brand-quaternary;
+    }
+  }
+
+  .footer & {
+
+    > li {
+
+      & + li {
+        border-top-color: @footer-hr-color;
+      }
+
+      .post-title {
+
+        > a {
+          color: @footer-link-color;
+
+          &:hover {
+            color: @footer-link-color-hover;
+          }
+        }
+      }
+    }
+  }
+}
+
+.widget_posts__horizontal {
+  
+  .widget-posts-list {
+
+    > li {
+
+      &:before {
+        background: @brand-quaternary;
+      }
+    }
+  }
+}
+
+// Tags
+.tagcloud {
+
+  > a {
+    background: @tag-bg;
+    color: @tag-color;
+    border-radius: @border-radius-small;
+
+    &:hover {
+      background: @tag-bg-hover;
+      color: @tag-color-hover;
+    }
+
+    .footer & {
+      background: @footer-btn-bg;
+      color: @brand-primary;
+
+      &:hover {
+        color: @footer-btn-bg !important;
+        background: @footer-btn-bg-hover;
+      }
+    }
+  }
+}
+
+
+// Default WordPress Widgets styling
+.widget_archive ul li,
+.widget_nav_menu ul li,
+.widget_meta ul li,
+.widget_pages ul li,
+.widget_recent_comments ul li,
+.widget_recent_entries ul li,
+.widget_categories ul li {
+
+  &.current-menu-item {
+
+    &:before {
+      color: @brand-primary;
+    }
+    > a {
+      color: @brand-primary;
+    }
+  }
+}
+  .widget_archive ul li:before,
+  .widget_nav_menu ul li:before,
+  .widget_meta ul li:before,
+  .widget_pages ul li:before,
+  .widget_recent_comments ul li:before,
+  .widget_recent_entries ul li:before,
+  .widget_categories ul li:before {
+    color: @text-color;
+  }
+
+  .widget_archive ul li:hover:before,
+  .widget_nav_menu ul li:hover:before,
+  .widget_meta ul li:hover:before,
+  .widget_pages ul li:hover:before,
+  .widget_recent_comments ul li:hover:before,
+  .widget_recent_entries ul li:hover:before,
+  .widget_categories ul li:hover:before {
+    color: @brand-primary;
+  }
+
+//
+// #Gallery
+// --------------------------------------------------
+.gallery-list {
+
+  // 6 cols layout
+  &.gallery-list__6cols {
+
+    .gallery-item {
+
+      .gallery-thumb {
+        padding: @gallery-thumb-padding / 2;
+      }
+    }
+  }
+}
+
+  .gallery-item {
+
+    .gallery-thumb {
+      padding: @gallery-thumb-padding;
+      background: @gallery-thumb-bg;
+      border: 1px solid @gallery-thumb-border;
+      border-radius: @border-radius-small;
+
+      > a {
+
+        &:before {
+          border-radius: @border-radius-small;
+          background: @thumbnail-overlay-bg;
+        }
+
+        &:hover:before {
+          .opacity(@thumbnail-overlay-bg-opacity);
+        }
+
+      }
+
+      img {
+        border: 1px solid @gallery-thumb-border;
+        border-radius: @border-radius-small;
+      }
+    }
+
+    .gallery-caption {
+
+      h5 {
+        .text-overflow();
+
+        > a {
+          color: @text-color;
+
+          &:hover {
+            color: @brand-primary;
+          }
+        }
+      }
+      .date {
+        color: @gallery-date-color;
+      }
+    }
+  }
+
+
+// Gallery Filter
+.gallery-filter {
+
+  > li {
+
+    > a {
+      background: @gallery-filter-bg;
+      color: @gallery-filter-color;
+      border-radius: @border-radius-small;
+
+      &:hover,
+      &.current {
+        background: @gallery-filter-bg-hover;
+        color: @gallery-filter-color-hover;
+      }
+    }
+  }
+}
+
+.gallery-list {
+
+  .gallery-thumb {
+
+    .thumbnail-caption-inner {
+      background: @brand-primary;
+    }
+  }
+}
+
+// Single Gallery Item
+.gallery-figure__floated {
+
+  @media (min-width: 992px) {
+    margin-right: 15px;
+  }
+}
+.gallery-description {
+
+  ul {
+
+    li {
+      overflow: hidden;
+    }
+  }
+
+  &.gallery-description__floated {
+    padding: 0 15px;
+  }
+}
+
+
+
+//
+// #Contacts
+// --------------------------------------------------
+
+.map-canvas {
+  border: 1px solid @brand-quaternary;
+  border-radius: @border-radius-small;
+  
+  // Spinners
+  &:before {
+    color: @text-color;
+  }
+}
+
+// Contact Information
+.contact-info-list {
+
+  > li {
+
+    .icon {
+      border-radius: @border-radius-small;
+      background: @brand-quaternary;
+
+      // Top triangle (decoration)
+      &:before {
+        border-left: @f-widget-icon-size/2 solid rgba(255,255,255,0);
+        border-right: @f-widget-icon-size/2 solid rgba(255,255,255,0);
+        border-top: @f-widget-icon-size/2 solid rgba(255,255,255,.1);
+      }
+      // Bottom triangle (decoration)
+      &:after {
+        border-left: @f-widget-icon-size/2 solid rgba(0,0,0,0);
+        border-right: @f-widget-icon-size/2 solid rgba(0,0,0,0);
+        border-bottom: @f-widget-icon-size/2 solid rgba(0,0,0,.03);
+      }
+    }
+
+    a {
+      color: @text-color;
+
+      &:hover {
+        color: @brand-primary;
+      }
+    }
+  }
+}
+
+// Contact Form
+div.wpcf7 {
+  
+  // Alert
+  div.wpcf7-response-output {
+    padding: @alert-padding;
+    margin-bottom: @line-height-computed;
+    border: 1px solid transparent !important;
+    border-radius: @alert-border-radius;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  div.wpcf7-mail-sent-ok {
+    .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+  }
+  div.wpcf7-validation-errors,
+  div.wpcf7-mail-sent-ng {
+    .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+  }
+  div.wpcf7-spam-blocked {
+    .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+  }
+
+  // Apply the mixin to the alerts
+  div.wpcf7-mail-sent-ok    { .alert-styles(@alert-success-bg); }
+  div.wpcf7-validation-errors,
+  div.wpcf7-mail-sent-ng    { .alert-styles(@alert-warning-bg); }
+  div.wpcf7-spam-blocked     { .alert-styles(@alert-danger-bg); }
+}
+
+
+
+//
+// #Coming Soon
+// --------------------------------------------------
+
+// Countdown
+.countdown-wrapper {
+  .line {
+    background: @page-header-title-color;
+
+    &:before {
+      background: @page-header-title-color;
+    }
+  }
+}
+.countdown {
+  .countdown-holder {
+    background: @body-bg;
+  }
+}
+  
+  .count-circle {
+    display: block;
+    font-size: 24px;
+    line-height: 1.2em;
+    color: @brand-primary;
+    font-weight: bold;
+    position: relative;
+    padding: 5px 0 0 12px;
+
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
+
+    &:before {
+      content:"";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: -26px;
+      width: 1px;
+      background: @brand-primary;
+
+      @media (min-width: 768px) {
+        bottom: -35px;
+      }
+    }
+  }
+  .countdown-desc {
+    padding: 0 0 0 12px;
+    font-size: 14px;
+    color: @brand-primary;
+    text-transform: lowercase;
+
+    @media (min-width: 768px) {
+      font-size: 18px;
+    }
+  }
+
+
+
+// --------------------------------------------------
+// #Pages
+// --------------------------------------------------
+
+//
+// #Page - About Us
+// --------------------------------------------------
+
+// Testimonials
+.testimonial {
+  border: 1px solid @brand-quaternary;
+  border-radius: @border-radius-small;
+
+  .testi-author {
+    background: @brand-primary;
+    .border-bottom-radius(@border-radius-small);
+
+    @media (min-width: 768px) {
+      border-right: 1px solid @brand-quaternary;
+      border-radius: @border-radius-small 0 0 @border-radius-small;
+    }
+    .info {
+      color: darken(@brand-primary, 20%);
+    }
+  }
+  .testi-body {
+    .border-top-radius(@border-radius-small);
+
+    @media (min-width: 768px) {
+      border-left: 1px solid @brand-quaternary;
+      border-radius: @border-radius-small @border-radius-small 0 0;
+    }
+
+    blockquote {
+      color: @text-color;
+    }
+  }
+
+
+  //Colors
+  &.testimonial-color__secondary {
+    .testi-author {
+      background: @brand-secondary;
+    }
+    .info {
+      color: darken(@brand-secondary, 20%);
+    }
+  }
+  &.testimonial-color__tertiary {
+    .testi-author {
+      background: @brand-tertiary;
+    }
+    .info {
+      color: darken(@brand-tertiary, 20%);
+    }
+  }
+}
+
+// Timeline
+.timeline {
+
+  &:before {
+    background: @brand-quaternary;
+  }
+
+  > li {
+    border: 1px solid @brand-quaternary;
+    border-radius: @border-radius-small;
+    
+    // Circle
+    &:before {
+      background: @brand-quaternary;
+      border: 3px solid @body-bg;
+    }
+
+    // Arrow
+    &:after {
+      border-right:4px solid @brand-quaternary;
+    }
+
+    .date {
+      color: @brand-secondary;
+    }
+  }
+
+  & + .link-bordered {
+
+    &:before {
+      background: @brand-secondary;
+      border: 3px solid @body-bg;
+    }
+  }
+}
+
+
+// Team Member
+.team-member {
+  
+  // Member's Photo
+  .thumbnail {
+
+    > a {
+
+      &:before {
+        background: @thumbnail-bg;
+      } 
+    }
+
+    // Member's social profiles
+    .social {
+      @media (min-width: 768px) {
+        background: @brand-primary;
+      }
+
+      > a {
+        &:hover {
+          color: darken(@brand-primary, 20%);
+        }
+
+        @media (min-width: 768px) {
+          color: @body-bg;
+        }
+      }
+    }
+  }
+
+  .member-header {
+
+    > h3 {
+
+      > a {
+        color: @text-color;
+
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+    .info {
+      color: @text-muted;
+    }
+  }
+}
+
+
+
+//
+// #Page - Special Offers
+// --------------------------------------------------
+
+// Offers List
+.offers-list {
+
+  > li {
+
+    &:before {
+      font-family: @font-family-alt;
+      color: @brand-primary;
+    }
+
+    .offer-discount {
+      background: @thumbnail-bg;
+      font-family: @font-family-alt;
+      color: @body-bg;
+
+      &:before {
+        background: @brand-primary;
+      }
+    }
+  }
+}
+
+
+
+//
+// #Page - Eco Technology
+// --------------------------------------------------
+
+// Video Holder
+.video-holder {
+
+  .screen {
+    background: @video-screen-bg;
+    
+    // Let's create camera and logo with help of pseudoelements
+    // Camera & Logo
+    &:before,
+    &:after {
+      background: @body-bg;
+    }
+
+    .screen-inner {
+      background: @body-bg;
+    }
+  }
+
+  // Stand
+  .stand {
+
+    .stand-center {
+       border-bottom: 28px solid @video-stand-bg;
+
+       @media (min-width: 768px) {
+         border-bottom: 56px solid @video-stand-bg;
+      }
+    }
+      .stand-shadow {
+        background: rgba(red(@video-screen-bg), blue(@video-screen-bg), green(@video-screen-bg), .1);
+      }
+        .stand-shadow-left-helper {
+          border-left:2px solid @body-bg;
+        }
+        .stand-shadow-right-helper {
+          border-right:2px solid @body-bg;
+        }
+
+    .stand-bottom {
+      background: @video-stand-bg;
+
+      &:before {
+        border-right:16px solid @video-stand-bg;
+      }
+      &:after {
+        border-left:16px solid @video-stand-bg;
+      }
+    }
+  }
+}
+
+
+// Icobox
+.icobox {
+  
+  .icobox-holder {
+    vertical-align: middle;
+
+    .fa {
+      color: @body-bg;
+    }
+    .icobox-dummy-content {
+        padding-top: 100%; /* forces 1:1 aspect ratio */
+    }
+
+    .img-container {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      text-align:center; /* Align center inline elements */
+      font: 0/0 a;
+    }
+
+    .img-container:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+    }
+
+    .img-container img {
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+
+  .icobox-desc {
+
+    h3 {
+      font-family: @font-family-alt;
+    }
+
+    &.icobox-desc__alt {
+
+      @media (min-width: 992px) {
+        color: @body-bg;
+        border-radius: @border-radius-small;
+      }
+
+      h3 {
+
+        @media (min-width: 992px) {
+          color: @body-bg;
+        }
+      }
+    }
+  }
+}
+
+// Icobox Colors
+.icobox__primary  {
+
+  .icobox-holder {
+    background: @brand-primary;
+  }
+  .icobox-desc {
+
+    h3,
+    h3 a {
+      color: @brand-primary;
+    }
+  }
+
+  .icobox-desc__alt {
+    
+    h3,
+    h3 a {
+      @media (min-width: 992px) {
+        color: @body-bg;
+      }
+    }
+
+    @media (min-width: 992px) {
+      background: @brand-primary;
+    }
+  }
+
+  &:hover .icobox-holder {
+    background: darken(@brand-primary, 7%);
+  }
+}
+.icobox__secondary  {
+
+  .icobox-holder {
+    background: @brand-secondary;
+  }
+  .icobox-desc {
+
+    h3,
+    h3 a {
+      color: @brand-secondary;
+    }
+  }
+  
+  .icobox-desc__alt {
+
+    h3,
+    h3 a {
+      @media (min-width: 992px) {
+        color: @body-bg;
+      }
+    }
+
+    @media (min-width: 992px) {
+      background: @brand-secondary;
+    }
+  }
+  &:hover .icobox-holder {
+    background: darken(@brand-secondary, 7%);
+  }
+
+}
+.icobox__tertiary  {
+
+  .icobox-holder {
+    background: @brand-tertiary;
+  }
+  .icobox-desc {
+
+    h3,
+    h3 a {
+      color: @brand-tertiary;
+    }
+  }
+
+  .icobox-desc__alt {
+    
+    h3,
+    h3 a {
+      @media (min-width: 992px) {
+        color: @body-bg;
+      }
+    }
+
+    @media (min-width: 992px) {
+      background: @brand-tertiary;
+    }
+  }
+  &:hover .icobox-holder {
+    background: darken(@brand-tertiary, 7%);
+  }
+}
+
+// Icoboxes with Thumbs
+.icobox__with-thumbs {
+
+  &:hover {
+
+    @media (min-width: 768px) {
+      &:before {
+        border: 1px solid @icobox-hover-border;
+        border-radius: @border-radius-small @border-radius-small 0 0;
+        background: @icobox-hover-bg;
+      }
+
+      .icobox-thumbs {
+        border: 1px solid @icobox-hover-border;
+        border-radius: 0 0 @border-radius-small @border-radius-small;
+        background: @icobox-hover-bg;
+      }
+    }
+  }
+}
+
+
+// Social Buttons
+.social-btns {
+  background: @brand-quinary;
+  border: 1px solid @brand-quaternary;
+
+  .btn-fb,
+  .btn-tw {
+    border-radius: @border-radius-small;
+  }
+}
+
+
+
+//
+// #Page - Single Member
+// --------------------------------------------------
+.single-member-info {
+  background: @brand-bg;
+  
+  @media (min-width: 992px) {
+    &:before {
+      background: darken(@brand-bg, 3%);
+    }
+  }
+}
+
+
+/* 
+ * Core Owl Carousel CSS File
+ *  v1.3.2
+ */
+
+/* mouse grab icon */
+.grabbing { 
+  cursor:url(../images/grabbing.png) 8 8, move;
+}
+.prev-btn,
+.next-btn {
+  border-radius: @border-radius-small;
+  background: rgba(red(@brand-primary), green(@brand-primary), blue(@brand-primary), .1);
+
+  &:hover {
+    background: rgba(red(@brand-secondary), green(@brand-secondary), blue(@brand-secondary), .1);
+  }
+}
+  
+  .prev-btn {
+
+    &:before {
+      border-left: 15px solid rgba(red(@brand-primary), green(@brand-primary), blue(@brand-primary), .1);
+    }
+    &:after {
+      border-right: 15px solid @brand-primary;
+    }
+
+    &:hover {
+      
+      &:before {
+        border-left: 15px solid rgba(red(@brand-secondary), green(@brand-secondary), blue(@brand-secondary), .1);
+      }
+      &:after {
+        border-right: 15px solid @brand-secondary;
+      }
+
+    }
+  }
+
+  .next-btn {
+    &:after {
+      border-right: 15px solid rgba(red(@brand-primary), green(@brand-primary), blue(@brand-primary), .1);
+    }
+    &:before {
+      border-left: 15px solid @brand-primary;
+    }
+
+    &:hover {
+
+      &:after {
+        border-left: 15px solid @brand-secondary;
+      }
+      
+      &:before {
+        border-right: 15px solid rgba(red(@brand-secondary), green(@brand-secondary), blue(@brand-secondary), .1);
+      }
+    }
+  }
+
+.owl-theme .owl-controls .owl-page span{
+  background: #869791;
+}
+
+/* preloading images */
+.owl-item.loading{
+
+  &:before {
+    color: @text-color;
+  }
+}
+
+
+//
+// #Page - Products
+// --------------------------------------------------
+
+// Categories
+.cat-box {
+  border-radius: @border-radius-small;
+  border: 1px solid @brand-quaternary;
+}
+  .cat-title {
+    border-radius: @border-radius-small;
+    background: @brand-primary;
+    color: @body-bg;
+    font-family: @font-family-alt;
+
+    .cat-box__secondary & {
+      background: @brand-secondary;
+    }
+    .cat-box__tertiary & {
+      background: @brand-tertiary;
+    }
+  }
+
+
+// Partners (line)
+.partners-list {
+
+  > li {
+
+    a {
+      border: 1px solid @brand-quaternary;
+    }
+  }
+}
+
+// Partners (logos table)
+.logos-list {
+
+  td {
+    border: 1px solid @brand-quaternary !important;
+    border-radius: @border-radius-small;
+
+    .cta-link {
+      color: @brand-secondary;
+
+      &:hover {
+        color: @brand-primary;
+      }
+    }
+  }
+}
+
+// News
+.news-list {
+
+  > li {
+
+    .excerpt {
+
+      &:before {
+        border-left: 1px solid @brand-quaternary;
+        border-right: 2px solid @brand-quaternary;
+      }
+      &:after {
+        border-left: 3px solid @brand-quaternary;
+        border-right: 4px solid @brand-quaternary;
+      }
+    }
+  }
+}
+
+//
+// #Page - Single Product
+// --------------------------------------------------
+
+// Gallery
+.gallery-view {
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+
+  img {
+    padding: @thumbnail-padding;
+  }
+}
+
+// Gallery Rounded
+.gallery__rounded {
+
+  .gallery-view-wrapper {
+
+    .gallery-view {
+      border: 5px solid @thumbnail-bg;
+
+      > img {
+        background: @brand-primary;
+      }
+    }
+
+  }
+  .gallery-thumbs-wrapper {
+
+    a {
+
+      &:hover,
+      &.active {
+        background: @brand-primary;
+      }
+    }
+  }
+}
+
+// Product Info
+.product-info {
+  border-top: 1px solid @brand-quaternary;
+  border-bottom: 1px solid @brand-quaternary;
+
+  .bordered {
+
+    @media (min-width: 992px) {
+      border-right: 1px solid @brand-quaternary;  
+    }
+  }
+}
+
+// Rating Stars
+.stars {
+
+  .fa {
+
+    &.fa-star {
+      color: @star-color;
+    }
+
+    &.empty {
+      color: @star-empty-color;
+    }
+  }
+}
+
+
+//
+// #Footer
+// --------------------------------------------------
+.footer {
+  background: @footer-bg;
+  color: @footer-text-color;
+
+  // Foote Top Lines
+  &:before {
+    border-top: 1px solid @body-bg;
+    border-bottom: 1px solid @body-bg;
+  }
+  &:after {
+    background: @body-bg;
+  }
+}
+
+  // Widgets in Footer Area
+  .widget__footer {
+    
+    .widget-title {
+      color: @widget-title-color;
+      
+      &:before {
+        border-right: 2px solid @widget-title-color;
+        border-left: 1px solid @widget-title-color;
+      }
+      &:after {
+        border-right: 4px solid @widget-title-color;
+        border-left: 3px solid @widget-title-color;
+      }
+    }
+
+    a {
+      color: @footer-link-color;
+
+      &:hover {
+        color: @footer-link-color-hover;
+      }
+    }
+  }
+
+
+  // Social Widget
+  .social-list__footer {
+
+    > li {
+
+      > a {
+        width: @f-widget-icon-size;
+        height: @f-widget-icon-size;
+        border-radius: @border-radius-small;
+        background: @f-widget-social-bg;
+        color: @footer-btn-color;
+        line-height: @f-widget-icon-size;
+
+        &:hover {
+          color: @footer-btn-color-hover;
+          background: @footer-btn-bg-hover;
+        }
+    
+        // Top triangle (decoration)
+        &:before {
+          border-left: @f-widget-icon-size/2 solid rgba(255,255,255,0);
+          border-right: @f-widget-icon-size/2 solid rgba(255,255,255,0);
+          border-top: @f-widget-icon-size/2 solid rgba(255,255,255,.1);
+        }
+        // Bottom triangle (decoration)
+        &:after {
+          border-left: @f-widget-icon-size/2 solid rgba(0,0,0,0);
+          border-right: @f-widget-icon-size/2 solid rgba(0,0,0,0);
+          border-bottom: @f-widget-icon-size/2 solid rgba(0,0,0,.03);
+        }
+      }
+    }
+  }
+
+// Twitter Feed
+// -------------------------
+.loading-container {
+
+  .footer & {
+    color: @footer-text-color;
+  }
+}
+ 
+.twitter-article {
+  
+  // Create divider
+  .twitter-article-col + .twitter-article-col & {
+    border-top: 1px solid @footer-hr-color;
+  }
+
+  .widget__sidebar .twitter-article-col + .twitter-article-col & {
+    border-top-color: @brand-quaternary;
+  }
+}
+  
+  // Twitter User Icon
+  .twitter-pic {
+    border: 5px solid @thumbnail-bg;
+
+    .sidebar & {
+
+      &:hover {
+        border-color: @thumbnail-bg-hover;
+      }
+    }
+
+    .footer & {
+      border: 5px solid @footer-link-color;
+    }
+  }
+  // Follow Button
+  .btn-twitter {
+    border-radius: @border-radius-small;
+    font-family: @font-family-sans-serif;
+
+    .footer & {
+      color: @footer-btn-color;
+      background: @footer-btn-bg;
+      @shadow: inset 0 -2px 0 rgba(255,255,255,.05), 0 1px 2px rgba(0,0,0,.3);
+      .box-shadow(@shadow);
+
+      &:hover {
+        color: @footer-btn-color-hover;
+        background: @footer-btn-bg-hover;
+      }
+    }
+  }
+
+  // Twitter Meta
+  .twitter-meta {
+
+    .widget__sidebar & {
+
+      a {
+
+        &:hover {
+          color: @brand-primary;
+        }
+      }
+    }
+
+    a {
+      color: @footer-link-color;
+
+      &:hover {
+        color: @footer-link-color-hover;
+      }
+    }
+  }
+ 
+  // Twitter Text
+  .twitter-text {
+
+    .footer & {
+
+      a {
+        color: @footer-link-color;
+
+        &:hover {
+          color: @footer-link-color-hover;
+        }
+      }
+    }
+  }
+    .tweet-time {
+
+      .widget__sidebar & {
+        > a {
+
+          &:hover {
+            color: @brand-primary;
+          }
+        }
+      }
+
+      .footer & {
+
+        > a {
+          color: @footer-link-color;
+
+          &:hover {
+            color: @footer-link-color-hover;
+          }
+        }
+      }
+    }
+ 
+  // Twitter Feed Action Buttons
+  .twitter-actions {
+
+    .intent {
+
+      a {
+        color: lighten(@text-color, 10%);
+
+        &:hover {
+          color: @brand-primary;
+        }
+
+        .footer & {
+          color: @footer-link-color;
+
+          &:hover {
+            color: @footer-link-color-hover;
+          }
+        }
+      }
+    }
+  }
+
+// Horizontal Twitter Feed
+.widget_twitter__horizontal {
+
+  .twitter-feed {
+
+    .twitter-article-col {
+
+      .twitter-article {
+        &:before {
+          background: @brand-quaternary;
+        }
+      }
+    }
+  }
+}
+
+
+
+// Copyright
+// -------------------------
+.copyright {
+  background: @copyright-bg;
+  color: @copyright-color;
+
+  a {
+    color: @copyright-color;
+
+    &:hover {
+      color: @footer-link-color;
+    }
+  }
+}
+
+// Copyright (light version)
+.copyright__light {
+  background: @body-bg;
+  color: @text-color;
+}
+
+
+//
+// #Misc
+// --------------------------------------------------
+
+// Horizontal Rule
+.hr__two-half {
+  
+  .left-hr,
+  .right-hr {
+    
+    // Divider itself
+    &:before {
+      background: @hr-color;
+      
+      // Make line darker for Footer
+      .footer & {
+        background: @footer-hr-color;
+      }
+    }
+
+    // Little dots on Horizontal Rule
+    &:after {
+      background: darken(@hr-color, 30%);
+
+      .footer & {
+        background: @footer-hr-color;
+      }
+    }
+  }
+}
+
+hr {
+  border-top-color: @brand-quaternary;
+}
+
+// Vertical Rule
+.bordered {
+  border-right: 1px solid @brand-quaternary;
+}
+
+.fullwidth-wrapper {
+  background: @cta-fullwidth-bg;
+}
+
+// * IMPORSTS //
+@import "mixins.less";
+@import "revslider-custom.less";
+@import "utilities.less";

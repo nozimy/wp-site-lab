@@ -1,0 +1,76 @@
+@media (max-width:1100px){
+.block .container,
+.container{padding:0 15px;width:970px}
+.main-content{width:685px}
+.sidebar{ width:285px; padding-left:15px;}
+.add img{max-width:255px}
+.humble-footer{padding:30px 50px}
+}
+
+@media (max-width:980px){
+.block .container,
+.container{padding:0 15px;width:750px}
+.main-content{width:100%}
+.sidebar{width:100%}
+.sidebar.pull-right {
+    padding-left:15px;
+    padding-right:15px;
+}
+.sidebar.pull-left {
+    padding-left:15px;
+    padding-right:15px;
+}
+.slide-title{float:left;left:auto;position:relative;top:auto;width:100%;
+    -webkit-transform:translate(0);
+    -moz-transform:translate(0);
+    -ms-transform:translate(0);
+    -o-transform:translate(0);
+    transform:translate(0);
+}
+.slide-title:before{background:#222;opacity:1}
+.slide-title{opacity:1}
+nav,.nav-height{display:none}
+.logo{padding-bottom:20px;padding-top:20px}
+.logo img{max-width:150px}
+.sidebar{margin-top:90px}
+.related-posts .row > div{display:inline-block;margin:0 -1px;width:50%}
+.related-posts{text-align:center}
+.single-post-detail ol, .single-post-detail ul{padding-left:20px}
+.humble-footer .null-instagram-feed ul li{flaot:left;padding:2.5px;width:33.3333334%;}
+.humble-listpost .post-img{margin-bottom:30px;}
+}
+
+
+@media (max-width:767px){
+.block .container, .container{width:100%}
+.sidemenu-btn{position: absolute;left:15px;top:50%;margin-top:-10px;}
+.theme-layout:before {background: transparent;}
+.additional-acts {display: none;}
+.logobar{padding:0 10px}
+header .logo{padding-left:0}
+
+/*
+
+.logo img{max-width:100px}
+*/
+.search.active form{width:230px}
+.search form{right:	0;top:-5px}
+.additional-acts{min-width:100px}
+.owl-nav{opacity:1;padding:0 20px}
+.slide-title h2{font-size:20px}
+.post-content{display:unset;float:left;padding-left:0;padding-top:20px;width:100%}
+.humble-post.s2 > p {text-align: center;}
+.post-author > img{display:unset}
+.author-detail{display:unset;float:left;padding-left:0;padding-top:30px;width:100%}
+.comment > img{display:unset}
+.comment-detail{display:unset;float:left;margin-top:30px;width:100%}
+.comment-detail > h4{float:left;margin:0 0 10px;width:100%}
+blockquote.style2{padding:70px 20px 30px}
+.link-post a{font-size:15px;}
+
+}
+
+@media (max-width:480px){
+    .humble-footer{padding:15px 15px 30px}
+    .related-posts .row > div{width:100%}
+}

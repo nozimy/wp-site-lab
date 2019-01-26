@@ -1,0 +1,1481 @@
+/* Table of Content
+==================================================
+  #Buttons
+  #Emphasis & misc
+  #Headers and Title
+    - Page Header
+    - Page Header for 404 Error
+    - Title
+    - Title Bordered
+    - Title Lead
+  #Dropcaps
+  #Call to Action (promoboxes)
+  #Tables
+  #Tabs (tabbed content)
+  #Pricing Tables
+  #Pagination
+  #Images (thumbnails)
+  #Video
+  #Blockquote
+  #Lists
+  #Forms
+  #Dropdowns
+  #Navbar
+  #Alerts
+  #Progress bars
+  #List groups
+  #Panels
+  #Accordions
+  #Wells
+  #Horizontal Rule
+*/
+
+// Variables
+@import "custom-variables.less";
+
+a {
+  color: @link-color;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+  }
+}
+
+//
+// #Buttons
+// --------------------------------------------------
+
+// Common styles
+.btn-default,
+.btn-primary,
+.btn-secondary,
+.btn-tertiary,
+.btn-success,
+.btn-info,
+.btn-warning,
+.btn-danger {
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  @shadow: inset 0 -4px 0 rgba(255,255,255,.14), 0 2px 3px rgba(0,0,0,.1);
+  .box-shadow(@shadow);
+  text-transform: uppercase;
+  font-family: 'Bebas';
+  border: none;
+  .transition(background 0.2s ease);
+  .button-size(@padding-vertical:4px; @padding-horizontal:37px; @font-size:20px; @line-height: @line-height-base; @border-radius: @border-radius-small);
+
+  // Invert inner shadow
+  &:active,
+  &.active {
+    @shadow: inset 0 4px 0 rgba(255,255,255,.14), 0 2px 3px rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+  }
+
+  &:hover,
+  &:focus {
+    .transition(none);
+  }
+}
+
+// Mixin for generating new styles
+.btn-styles(@btn-color: #555; @btn-txt-color) {
+  background: @btn-color;
+  color: @btn-txt-color;
+
+  &:hover,
+  &:focus  {
+    color: @btn-txt-color;
+    background-color: darken(@btn-color, 9%);
+  }
+
+  &:active,
+  &.active {
+    color: @btn-txt-color;
+    background-color: darken(@btn-color, 9%);
+  }
+}
+
+// Common styles
+.btn {
+  // Remove the gradient for the pressed/active state
+  &:active,
+  &.active {
+    background-image: none;
+  }
+}
+
+// Apply the mixin to the buttons
+.btn-default { 
+  .btn-styles(@btn-default-bg; @btn-default-color); 
+  text-shadow: 0 1px 0 rgba(255,255,255,.2);
+  .box-shadow(inset 0 -4px 0 rgba(255,255,255,.14)) !important;
+}
+.btn-primary { .btn-styles(@btn-primary-bg; @btn-primary-color); }
+.btn-secondary { .btn-styles(@btn-secondary-bg; @btn-secondary-color); }
+.btn-tertiary { .btn-styles(@btn-tertiary-bg; @btn-tertiary-color); }
+.btn-success { .btn-styles(@btn-success-bg; @btn-success-color); }
+.btn-warning { .btn-styles(@btn-warning-bg; @btn-warning-color); }
+.btn-danger  { .btn-styles(@btn-danger-bg; @btn-danger-color); }
+.btn-info    { .btn-styles(@btn-info-bg; @btn-info-color); }
+
+// Button Sizes
+.btn-lg {
+  .button-size(@padding-vertical:7px; @padding-horizontal:37px; @font-size:28px; @line-height: @line-height-large; @border-radius: @border-radius-small);
+
+  line-height: 36px;
+}
+.btn-sm {
+  .button-size(@padding-vertical:3px; @padding-horizontal:20px; @font-size:16px; @line-height: @line-height-small; @border-radius: @border-radius-small);
+    @shadow: inset 0 -3px 0 rgba(255,255,255,.14), 0 2px 3px rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+}
+.btn-xs {
+  .button-size(@padding-vertical:2px; @padding-horizontal:15px; @font-size:14px; @line-height: @line-height-small; @border-radius: @border-radius-small);
+    @shadow: inset 0 -2px 0 rgba(255,255,255,.14), 0 2px 3px rgba(0,0,0,.1);
+    .box-shadow(@shadow);
+}
+
+// Button Block
+.btn-block {
+  padding-left: 0;
+  padding-right: 0;
+}
+.link-bordered {
+  border-bottom: 1px dotted @link-color;
+  .transition(0.2s);
+
+  &:hover {
+    color: @text-color;
+    border-bottom-color: @text-color;
+    .transition(none);
+  }
+
+  &.link-bordered__secondary {
+    color: @brand-secondary;
+    border-bottom-color: @brand-secondary;
+
+    &:hover {
+      color: @text-color;
+      border-bottom-color: @text-color;
+    }
+  }
+}
+
+// Button Icons
+.btn .fa {
+  margin-right: 8px;
+}
+
+
+// #Emphasis & misc
+// -------------------------
+.text-secondary {
+  color: @brand-secondary;
+
+  h3& {
+    font-weight: bold;
+  }
+}
+.text-tertiary {
+  color: @brand-tertiary;
+}
+// p:empty {
+//   display: none;
+// }
+
+
+
+// #Headers and Title
+// --------------------------------------------------
+
+// Page Header
+.page-header {
+  position: relative;
+  margin: 0;
+  padding-top: @navbar-brand-height + 55px;
+  padding-bottom: 36px;
+  overflow: hidden;
+
+  &:before,
+  &:after {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    border-top: 1px solid @body-bg;
+    border-bottom: 1px solid @body-bg;
+    content:"";
+  }
+
+  &:before {
+    height: 4px;
+    bottom: 0px;
+  }
+  &:after {
+    height: 6px;
+    bottom: 7px;
+  }
+
+  h1 {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 0;
+    color: @page-header-title-color;
+    text-shadow: 0 1px 0 rgba(255,255,255,.15);
+  }
+
+  .breadcrumb {
+    background: none;
+    display: inline-block;
+    padding: 5px 0 0 3px;
+    margin-bottom: 0;
+    vertical-align: bottom;
+
+    > li {
+      float: right;
+      margin-bottom: 5px;
+      color: @page-header-link-color;
+    }
+
+    > li:before {
+      content: "@{breadcrumb-separator}\00a0";
+      color: @page-header-link-color;
+      padding: 0 4px;
+    }
+
+    a {
+      color: @page-header-link-color;
+      text-decoration: none;
+
+      &:hover {
+        color: @page-header-link-color-hover;
+      }
+    }
+  }
+
+  &.page-header__standard {
+    h1 {
+      float: left;
+      margin-top: 0;
+
+      @media (min-width: 768px) {
+        max-width: 60%;
+        .text-overflow();
+      }
+    }
+  }
+}
+
+//Page Header for 404 Error
+.page-header__404 {
+  text-align: center;
+  padding-top: @navbar-brand-height + 85px;
+  padding-bottom: 85px;
+
+  h1 {
+    display: block;
+    font-size: 80px;
+    line-height: 1em;
+    margin-bottom: 0;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+      font-size: 160px;
+    }
+
+    .line {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 1px;
+      vertical-align: middle;
+      background: @page-header-title-color;
+      background-clip: content-box;
+
+      &:before {
+        content:"";
+        display: block;
+        position: absolute;
+        width: 6px;
+        height: 3px;
+        background: @page-header-title-color;
+        margin-top: -1px;
+      }
+    }
+
+    .line__left {
+      left: -.2em;
+      margin: 0 0 0 -50%;
+
+      &:before {
+        right: 0;
+      }
+    }
+    .line__right {
+      left: .2em;
+      margin: 0 -50% 0 0;
+
+      &:before {
+        left: 0;
+      }
+    }
+  }
+  .desc {
+    font-size: 20px;
+    font-weight: bold;
+    color: @page-header-title-color;
+    text-shadow: 0 1px 0 rgba(red(@page-header-link-color), green(@page-header-link-color), blue(@page-header-link-color), .5);
+
+    @media (min-width: 768px) {
+      font-size: 28px;
+    }
+  }
+}
+
+.error404-notice {
+  text-align: center;
+  font-size: 15px;
+  line-height: 23px;
+
+  @media (min-width: 768px) {
+    padding: 40px 10px 100px 10px;
+  }
+}
+
+// Coming Soon
+.page-header__coming-soon {
+  text-align: center;
+  padding: 75px 0 85px 0;
+  margin-top: 0;
+}
+
+
+// Title
+// -------------------------
+.title {
+
+  h2 {
+    font-size: 20px;
+    line-height: 1em;
+    margin-bottom: 36px;
+    padding: 0 0 0 21px;
+    position: relative;
+
+    @media (min-width: 768px) {
+      font-size: 22px;
+    }
+
+    &:before,
+    &:after {
+      content:"";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 3px;
+      bottom: 3px;
+    }
+    &:before {
+      width: 4px;
+      border-left: 1px solid @brand-primary;
+      border-right: 2px solid @brand-primary;
+    }
+    &:after {
+      left: 5px;
+      width: 8px;
+      border-left: 3px solid @brand-primary;
+      border-right: 4px solid @brand-primary;
+    }
+  }
+
+  &.title__lg h2 {
+    font-size: 28px;
+  }
+
+  & + .well {
+    margin-top: -20px;
+  }
+}
+
+.alt-title,
+.comment-reply-title {
+  font-size: 30px;
+  font-family: @font-family-alt;
+  text-transform: uppercase;
+  text-shadow: none;
+  font-weight: 400;
+  margin-bottom: .5em;
+}
+
+
+// Title Bordered
+// -------------------------
+.title-bordered {
+  text-align: center;
+  margin-bottom: 35px;
+  .clearfix();
+  
+  h2 {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    color: @text-color;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-size: 24px;
+    font-family: @font-family-alt;
+    line-height: 1em;
+
+    @media (min-width: 768px) {
+      font-size: 40px;
+    }
+
+    .line {
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 1px;
+      vertical-align: middle;
+      background: @hr-color;
+      background-clip: content-box;
+
+      &:before {
+        content:"";
+        display: block;
+        position: absolute;
+        width: 6px;
+        height: 3px;
+        background: darken(@hr-color, 30%);
+        margin-top: -1px;
+      }
+    }
+
+    .line__left {
+      left: -.4em;
+      margin: 0 0 0 -50%;
+
+      &:before {
+        right: 0;
+      }
+    }
+    .line__right {
+      left: .4em;
+      margin: 0 -50% 0 0;
+
+      &:before {
+        left: 0;
+      }
+    }
+  }
+}
+
+
+// Title Lead
+// -------------------------
+.lead-title {
+  
+  h2 {
+    font-size: 24px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    font-family: @font-family-alt;
+    margin-bottom: .7em;
+
+    @media (min-width: 768px) {
+      font-size: 40px;
+    }
+  }
+}
+
+
+//
+// #Dropcaps
+// --------------------------------------------------
+.dropcap {
+  color: @brand-primary;
+}
+  // Dropcap squared
+  .dropcap__squared {
+    background: @brand-primary;
+    color: @brand-default;
+  }
+  // Dropcap rounded
+  .dropcap__rounded {
+    background: @brand-primary;
+    color: @brand-default;
+  }
+
+
+//
+// #Call to Action (promoboxes)
+// --------------------------------------------------
+.cta {
+  background: @cta-default-bg;
+  border-radius: @border-radius-small;
+}
+
+// Call to Action (alternative)
+.cta__alt {
+  background: @cta-alt-bg;
+  border: 1px solid @cta-alt-border-color;
+}
+
+// Call to Action (full width)
+.cta__fullw {
+  background: @cta-fullwidth-bg;
+}
+
+// Call to Action (vertical)
+.cta__ver {
+
+  &.cta__alt {
+    background: @cta-alt-bg;
+    border: 1px solid @cta-alt-border-color;
+  }
+
+  .cta-txt {
+    font-family: @font-family-alt;
+  }
+}
+
+
+//
+// #Tables
+// --------------------------------------------------
+.table {
+  width: 100%;
+  margin-bottom: @line-height-computed;
+  // Cells
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: @table-cell-padding;
+        line-height: @line-height-base;
+        vertical-align: top;
+        border-top: 1px solid @table-border-color;
+        background: @table-bg;
+      }
+    }
+  }
+  // Bottom align for column headings
+  > thead > tr > th {
+    vertical-align: bottom;
+    border-bottom: 2px solid @table-border-color;
+  }
+  // Remove top border from thead by default
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  // Account for multiple tbody instances
+  > tbody + tbody {
+    border-top: 2px solid @table-border-color;
+  }
+
+  // Nesting
+  .table {
+    background-color: @body-bg;
+  }
+}
+
+// Bordered version
+//
+// Add borders all around the table and between all the columns.
+
+.table-bordered {
+  border: 1px solid @table-border-color;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 1px solid @table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+  > tbody > tr:nth-child(odd) {
+    > td,
+    > th {
+      background-color: @table-bg-accent;
+    }
+  }
+}
+
+
+// Hover effect
+//
+// Placed here since it has to come after the potential zebra striping
+
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: @table-bg-hover;
+    }
+  }
+}
+
+.table {
+
+  > thead > tr {
+
+    th,
+    td {
+      background: @table-thead-bg;
+      color: @table-thead-color;
+    }
+  }
+}
+
+// Striped Vertical
+.table-striped-vertical {
+  > thead > tr > th:nth-child(odd) {
+    background-color: darken(@table-thead-bg, 2%);
+  }
+  > tbody > tr > td:nth-child(odd) {
+    background-color: @table-bg-accent;
+  }
+}
+// Hovered
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: @table-bg-hover !important;
+    }
+  }
+}
+
+
+//
+// #Tabs
+// --------------------------------------------------
+.tabs-wrapper {
+  border: 1px solid @tabs-pane-bg;
+  border-radius: @border-radius-small;
+}
+
+// Give the tabs something to sit on
+.nav-tabs {
+
+  > li {
+
+    // Actual tabs (as links)
+    > a {
+      line-height: @line-height-base;
+      color: @nav-tabs-color;
+
+      &:hover {
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        background: @nav-tabs-active-link-hover-bg;
+        color: @nav-tabs-active-link-hover-color;
+      }
+    }
+
+    // Active state, and it's :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    .nav-justified();
+    .nav-tabs-justified();
+  }
+}
+
+.tab-content {
+  background: @tabs-pane-bg;
+}
+
+//
+// Tabs Alternative
+// ----------------
+.tabs-alt {
+
+  &.tabs-wrapper {
+    border: 1px solid @tabs-alt-bg;
+    background: @tabs-alt-bg;
+  }
+
+  .nav {
+
+    > li {
+
+      > a {
+        color: @nav-tabs-alt-color;
+
+        &:hover {
+          color: @nav-tabs-alt-active-link-hover-color;
+          background-color: @nav-tabs-alt-active-link-hover-bg;
+          border: 1px solid @nav-tabs-alt-active-link-hover-border-color;
+        }
+      }
+
+      // Active state, and it's :hover to override normal :hover
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @nav-tabs-alt-active-link-hover-color;
+          background-color: @nav-tabs-alt-active-link-hover-bg;
+          border: 1px solid @nav-tabs-alt-active-link-hover-border-color;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  }
+  .tab-content {
+    background: @tabs-alt-pane-bg;
+  }
+}
+
+
+
+//
+// #Pricing Tables
+// --------------------------------------------------
+.pricing-table-header {
+  background: @pricing-table-header-bg;
+  
+  .price {
+    font-family: @font-family-alt;
+  }
+}
+
+
+// Default Color
+.pricing-table__default {
+  background: @pricing-table-bg;
+
+  .pricing-table-header {
+    
+    .price {
+      color: @pricing-table-bg;
+    }
+  }
+  .pricing-table-content {
+    color: @pricing-table-text;
+  }
+}
+// Featured Color
+.pricing-table__featured {
+  background: @pricing-table-featured-bg;
+
+  .pricing-table-header {
+    
+    .price {
+      color: @pricing-table-featured-bg;
+    }
+  }
+  .pricing-table-content {
+    color: @pricing-table-featured-text;
+  }
+}
+
+
+//
+// Pricing Tables (alternative)
+// ----------------------------
+.pricing-table__alt {
+  background: @pricing-table-alt-bg;
+  border: 1px solid @pricing-table-alt-border;
+
+  .pricing-table-header {
+    background: @pricing-table-alt-bg;
+    border: 1px solid @pricing-table-alt-border;
+
+    .price {
+      font-family: @font-family-sans-serif;
+    }
+    .plan {
+      color: @pricing-table-alt-plan-color;
+    }
+  }
+  .pricing-table-content {
+    color: @pricing-table-alt-text;
+
+     > ul {
+
+      > li {
+        & + li {
+          border-top: 1px solid @pricing-table-alt-border;
+        }
+      }
+    }
+  }
+
+
+  // Featured
+  &.pricing-table__featured {
+
+    .pricing-table-header {
+      background: @pricing-table-alt-featured-header-bg;
+      color: @pricing-table-alt-featured-header-color;
+      border: none;
+
+      .price {
+        color: @pricing-table-alt-featured-header-color;
+      }
+      .plan {
+        color: @pricing-table-alt-featured-header-color;
+      }
+    }
+  }
+}
+
+
+//
+// Pricing Tables (with features)
+// ------------------------------
+.pricing-table-features {
+  margin-right: -@grid-gutter-width;
+}
+
+.pricing-table__with-features {
+
+  .pricing-table-content {
+
+    > ul {
+
+      > li {
+
+        .fa-times {
+          color: @text-color;
+        }
+      }
+    }
+  }
+}
+
+
+//
+// #Pagination
+// --------------------------------------------------
+.pagination {
+  background: @pagination-bg;
+  border-bottom: 2px solid @pagination-border !important;
+  border-radius: @border-radius-small;
+
+  > li {
+
+    > a,
+    > span {
+      background-color: @pagination-bg;
+      color: @pagination-color;
+      padding: @padding-base-vertical @padding-base-horizontal;
+    }
+
+    > a:hover {
+      color: @pagination-hover-color;
+      background-color: @pagination-hover-bg;
+      border-color: @pagination-hover-border;
+    }
+    &.active,
+    &.disabled {
+
+      > a,
+      > span {
+        background: @pagination-active-bg;
+        color: @pagination-active-color;
+
+        &:hover {
+          color: @pagination-active-color;
+        }
+      }
+    }
+    &.next,
+    &.prev {
+
+      > a {
+        background: @pagination-hover-bg;
+        color: @text-color;
+
+        &:hover {
+          background: @pagination-arrows-hover-bg;
+          color: @pagination-arrows-hover-color;
+        }
+      }
+    }
+
+    &.prev > a {
+      .border-left-radius(@border-radius-small);
+    }
+    &.next > a {
+      .border-right-radius(@border-radius-small);
+    }
+  }
+}
+
+
+//
+// #Images (thumbnails)
+// --------------------------------------------------
+.thumbnail,
+.img-thumbnail {
+  padding: @thumbnail-padding;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border !important;
+
+  a&:before {
+    left: @thumbnail-padding;
+    right: @thumbnail-padding;
+    top: @thumbnail-padding;
+    bottom: @thumbnail-padding;
+    background: @thumbnail-overlay-bg;
+  }
+
+  a&:hover:before {
+    .opacity(@thumbnail-overlay-bg-opacity);
+  }
+
+  // Add a hover state for linked versions only
+  a&:hover,
+  a&:focus,
+  a&.active {
+    background: @thumbnail-bg-hover;
+  }
+}
+
+// Thumbnail Caption
+.thumbnail {
+
+  .thumbnail-caption {
+    color: @body-bg;
+
+    &:before {
+      background: @brand-primary;
+    }
+  }
+}
+
+
+/* WordPress classes for images */
+.alignleft,
+.alignright,
+.aligncenter,
+.alignnone {
+  padding: @thumbnail-padding;
+  margin-bottom: @line-height-computed;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+
+  a& {
+
+    &:before {
+      left: @thumbnail-padding;
+      right: @thumbnail-padding;
+      top: @thumbnail-padding;
+      bottom: @thumbnail-padding;
+      background: rgba(red(@text-color), green(@text-color), blue(@text-color), .3);
+    }
+  }
+}
+
+.thumbnail-lg {
+  padding: @thumbnail-padding-lg;
+
+  a&:before {
+    left: @thumbnail-padding-lg;
+    right: @thumbnail-padding-lg;
+    top: @thumbnail-padding-lg;
+    bottom: @thumbnail-padding-lg;
+  }
+}
+
+
+
+// #Blockquote
+// --------------------------------------------------
+blockquote {
+  border: 1px solid @blockquote-border-color;
+  color: @blockquote-small-color;
+  border-radius: @border-radius-small;
+}
+
+
+
+// #Lists
+// --------------------------------------------------
+
+.list {
+
+  &.list-square {
+
+    li:before {
+      border: 2px solid @text-color;
+    }
+  }
+
+  &.list-color-primary {
+
+    li:before {
+      color: @brand-primary;
+      border-color: @brand-primary;
+    }
+  }
+
+  &.list-color-secondary {
+
+    li:before {
+      color: @brand-secondary;
+      border-color: @brand-secondary;
+    }
+  }
+
+  &.list-color-tertiary {
+
+    li:before {
+      color: @brand-tertiary;
+      border-color: @brand-tertiary;
+    }
+  }
+}
+
+
+
+
+//
+// #Forms
+// --------------------------------------------------
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  background-color: @input-bg;
+  .box-shadow(inset 0 4px 0 rgba(0,0,0,.04));
+  border: 1px solid @input-border;
+  .form-control-focus();
+}
+
+legend {
+  font-size: 18px;
+}
+
+.input-lg {
+  .input-size(@input-height-large; @padding-large-vertical; @padding-large-horizontal; @font-size-base; @line-height-large; @border-radius-small);
+}
+
+// Warning
+.has-warning {
+  .form-control-validation(@state-warning-text; @state-warning-border; @state-warning-bg);
+}
+// Error
+.has-error {
+  .form-control-validation(@state-danger-text; @state-danger-border; @state-danger-bg);
+}
+// Success
+.has-success {
+  .form-control-validation(@state-success-text; @state-success-border; @state-success-bg);
+}
+
+
+
+//
+// #Dropdowns
+// --------------------------------------------------
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
+  background-color: darken(@dropdown-link-hover-bg, 5%);
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+  background-color: darken(@dropdown-link-active-bg, 5%);
+}
+
+
+
+//
+// #Navbar
+// --------------------------------------------------
+
+.navbar-collapse-holder {
+  background: @navbar-bg;
+  .border-right-radius(@border-radius-small);
+  .border-left-radius(@border-radius-small);
+
+  @media (min-width: 992px) {
+    .border-left-radius(0);
+    text-align: left;
+    margin-left: @navbar-brand-width + 20px;
+  }
+
+  &:before {
+    @media (min-width: 992px) {
+      border-left: 1px solid @navbar-bg;
+      border-right: 3px solid @navbar-bg;
+    }
+  }
+  &:after {
+    @media (min-width: 992px) {
+      background: @navbar-bg;
+    }
+  }
+  
+  //Navbar Collapse
+  .navbar-collapse {
+    margin-left: -(@navbar-brand-width + 20px);
+    background: @brand-default;
+
+    // Main Navigation
+    .navbar-nav {
+      > li {
+        > a {
+          // Bottom border
+          &:before {
+            background: @brand-primary;
+          }
+          
+          // Ellipsis under the link text
+          &:after {
+            color: @brand-primary;
+          }
+        }
+      }
+      
+      @media (min-width: 992px) {
+        // Item with dropdown
+        > .open > a {
+          &,
+          &:hover,
+          &:focus {
+            background-color: @navbar-default-link-hover-bg !important;
+            color: @navbar-default-link-hover-color !important;
+            .caret {
+              border-top-color: @navbar-default-link-hover-color !important;
+              border-bottom-color: @navbar-default-link-hover-color !important;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    
+    @media (min-width: 992px) {
+      border-bottom: 5px solid @brand-primary;
+      background: rgba(red(@dropdown-bg), green(@dropdown-bg), blue(@dropdown-bg), .9);
+    }
+    > li {
+
+      > a {
+        color: @dropdown-link-color;
+
+        &:hover {
+          color: @dropdown-link-hover-color;
+        }
+      }
+    }
+  }
+}
+
+// Navbar toggle
+.navbar-default {
+
+  .navbar-toggle {
+    border-color: @navbar-inverse-toggle-border-color;
+    margin-right: @navbar-padding-horizontal;
+    background-color: @brand-primary;
+    border: none;
+
+    &:hover,
+    &:focus {
+      background-color: darken(@brand-primary, 5%);
+      border-color: darken(@text-color, 5%);
+    }
+    .icon-bar {
+      background-color: @navbar-inverse-toggle-icon-bar-bg;
+    }
+  }
+}
+
+
+
+//
+// #Alerts
+// --------------------------------------------------
+
+// Common styles
+.alert {
+  padding: @alert-padding;
+  margin-bottom: @line-height-computed;
+  border-radius: @alert-border-radius;
+
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: @alert-link-font-weight;
+  }
+
+  .close {
+    color: #fbfcf0;
+  }
+}
+
+// Mixin for generating new styles
+.alert-styles(@color) {
+  border-left: 5px solid darken(@color, 7%) !important;
+}
+
+// Apply the mixin to the alerts
+.alert-success    { .alert-styles(@alert-success-bg); }
+.alert-info       { .alert-styles(@alert-info-bg); }
+.alert-warning    { .alert-styles(@alert-warning-bg); }
+.alert-danger     { .alert-styles(@alert-danger-bg); }
+
+.alert-success {
+  .alert-variant(@alert-success-bg; @alert-success-border; @alert-success-text);
+}
+.alert-info {
+  .alert-variant(@alert-info-bg; @alert-info-border; @alert-info-text);
+}
+.alert-warning {
+  .alert-variant(@alert-warning-bg; @alert-warning-border; @alert-warning-text);
+}
+.alert-danger {
+  .alert-variant(@alert-danger-bg; @alert-danger-border; @alert-danger-text);
+}
+
+
+//
+// #Progress bars
+// --------------------------------------------------
+.progress {
+  border-radius: @border-radius-small;
+
+  &.progress__alt-bg {
+    background: @progress-bg-alt;
+  }
+}
+.progress-bar {
+  .border-left-radius(@border-radius-small);
+}
+
+
+// Bar itself
+// -------------------------
+
+// Outer container
+.progress {
+  height: @line-height-computed;
+  margin-bottom: @line-height-computed;
+  background-color: @progress-bg;
+  border-radius: @border-radius-base;
+  .box-shadow(inset 0 1px 2px rgba(0,0,0,.1));
+}
+
+// Bar of progress
+.progress-bar {
+  font-size: @font-size-small;
+  line-height: @line-height-computed;
+  color: @progress-bar-color;
+  background-color: @progress-bar-bg;
+  .box-shadow(inset 0 -1px 0 rgba(0,0,0,.15));
+  .transition(width .6s ease);
+}
+
+// Striped bars
+.progress-striped .progress-bar {
+  #gradient > .striped();
+  background-size: 40px 40px;
+}
+
+// Call animation for the active one
+.progress.active .progress-bar {
+  .animation(progress-bar-stripes 2s linear infinite);
+}
+
+.progress-bar-success {
+  .progress-bar-variant(@progress-bar-success-bg);
+}
+
+.progress-bar-info {
+  .progress-bar-variant(@progress-bar-info-bg);
+}
+
+.progress-bar-warning {
+  .progress-bar-variant(@progress-bar-warning-bg);
+}
+
+.progress-bar-danger {
+  .progress-bar-variant(@progress-bar-danger-bg);
+}
+
+
+
+//
+// #List groups
+// --------------------------------------------------
+
+// List groups with Icon
+.list-group {
+
+  .list-group-item {
+    
+    // Icon
+    .icon {
+      border-radius: @border-radius-small;
+      background: darken(@panel-default-heading-bg, 5%);
+    }
+
+    .fa {
+      color: @body-bg;
+    }
+  }
+
+  &.list-group__rounded.list-group__center {
+
+    .list-group-item {
+
+      h4,
+      h5 {
+
+        &:after {
+          background: @brand-primary;
+        }
+      }
+    }
+  }
+  
+
+  // Colors
+  &.list-group__color-primary .list-group-item {
+
+    .icon {
+      background: @brand-primary;
+    }
+    h5:after {
+      background: @brand-primary !important;
+    }
+  }
+  &.list-group__color-secondary .list-group-item {
+
+    .icon {
+      background: @brand-secondary;
+    }
+    h5:after {
+      background: @brand-secondary !important;
+    }
+  }
+  &.list-group__color-tertiary .list-group-item {
+
+    .icon {
+      background: @brand-tertiary;
+    }
+    h5:after {
+      background: @brand-tertiary !important;
+    }
+  }
+  
+}
+
+
+//
+// #Accordions (based on panel style)
+// --------------------------------------------------
+
+.accordion {
+
+  .panel {
+    background: none;
+  }
+  
+  .panel-heading {
+    background: @acc-panel-bg;
+    border-radius: @border-radius-small;
+  }
+  .panel-title {
+    color: @text-color;
+    border-radius: @border-radius-small;
+
+    &:hover {
+      color: @text-color;
+    }
+
+    // Plus/Minus Icon
+    &:before {
+      background: darken(@panel-default-heading-bg, 5%);
+      color: @body-bg;
+      .border-left-radius(@border-radius-small);
+    }
+  }
+
+
+  // Accordion Alternative
+  &.accordion__alt {
+    
+    .panel {
+
+      &:before {
+        background: @acc-border-color;
+      }
+      &:after {
+        border-right: 6px solid @acc-dot-color;
+        border-left: 6px solid @acc-dot-color;
+      }
+
+      .panel-title {
+
+        &:hover {
+          color: @brand-secondary;
+        }
+
+        // Plus/Minus Icon
+        &:before {
+          border-radius: @border-radius-small;
+          background: @brand-secondary;
+        }
+      }
+    }
+  }
+}
+
+
+//
+// #Wells
+// --------------------------------------------------
+.well {
+  background-color: @well-bg;
+  border: 1px solid @well-border;
+}

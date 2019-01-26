@@ -1,0 +1,64 @@
+
+body{
+	background-color:;
+	background-image:url("");
+	background-repeat:;
+	background-position:;
+	background-attachment:;
+}
+.zl_header{
+	background:   ;
+	}
+.zl_header:before{
+	background:  ;
+		opacity:.5;
+	}
+
+/* oooooooooooooooooooooooooo 
+FOOTER Bar Custom Style 
+oooooooooooooooooooooooooo */
+.zl_footer{
+		background: #353c3e;
+			color: #bbbbbb;
+	}
+.zl_footer .owl-item ul li{
+		border-bottom: 1px solid rgba(187,187,187,.1)!important;
+	}
+.zl_footer .owl-item ul a{
+	color: #fff;
+}
+.zl_foowidtit{
+	color: #bbbbbb;
+}
+.ballboy-pagination a{
+	color: #bbbbbb;
+	-webkit-box-shadow: inset 0 0 0 1px #bbbbbb;
+	box-shadow: inset 0 0 0 1px #bbbbbb;
+}
+
+.i-src:before, .i-src:after{
+border-color:;
+}
+.i-src:after{
+	background:;
+}
+
+
+/* oooooooooooooooooooooooooo 
+C O P Y R I G H T Bar Custom Style 
+oooooooooooooooooooooooooo */
+.zl_copyright{
+		background: #2D3335;
+			color: #777;
+	}
+
+
+.zl_copyright ul a{
+	color: #fff;
+}
+
+
+
+
+
+/* below is custom css */

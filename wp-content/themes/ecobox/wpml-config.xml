@@ -1,0 +1,23 @@
+<wpml-config>
+  <admin-texts>
+    <key name="ecobox_data">
+      <key name="opt-blog-title" />
+      <key name="opt-portfolio-related-title" />
+      <key name="opt-contact-title" />
+      <key name="opt-contact-desc" />
+      <key name="opt-contact-address" />
+      <key name="opt-footer-text" />
+    </key>
+  </admin-texts>
+	<custom-types>
+    <custom-type translate="1">portfolio</custom-type>
+	</custom-types>
+    <custom-fields>
+      <custom-field action="copy">ecobox_page_slider</custom-field>
+      <custom-field action="copy">ecobox_page_title</custom-field>
+      <custom-field action="copy">ecobox_page_slider_select</custom-field>
+    </custom-fields>
+	<taxonomies>
+		<taxonomy translate="1">portfolio_category</taxonomy>
+	</taxonomies>
+</wpml-config>

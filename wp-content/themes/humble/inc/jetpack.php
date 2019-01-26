@@ -1,0 +1,2 @@
+<?php
+/* Jetpack Compatibility File */

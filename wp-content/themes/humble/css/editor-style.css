@@ -1,0 +1,197 @@
+/*
+Theme Name: Humble
+Description: Used to style the TinyMCE editor.
+*/
+
+body{
+    font-family: 'Lato', sans-serif;
+    letter-spacing:0;
+}
+h1, h2, h3, h4, h5, h6{
+    color:#222222;
+    font-family: 'Lora', serif;
+}
+p{
+    font-family: 'Lato', sans-serif;
+    color:#353535;
+    font-size:14px;
+    letter-spacing:0;
+    line-height:23px;
+    margin-bottom:20px;
+}
+ul li,
+ol li{
+    font-family: 'Lora', serif;
+}
+a{color:inherit}
+a:hover,
+a:focus{
+    text-decoration:none;
+    outline:none;
+    outline:none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+iframe{
+    width:100%;
+    border:0;
+}
+h1, h2,
+h3, h4,
+h5, h6 {
+    letter-spacing: 1px;
+    margin: 30px 0;
+}
+h1 {
+	font-size:21px;
+}
+h2 {
+	font-size:18px;
+}
+h3 {
+	font-size:15px;
+}
+h4 {
+	font-size:13px;
+}
+h5 {
+	font-size:11px;
+}
+h6 {
+	font-size:10px;
+}
+blockquote{
+    border-left:3px solid #53ae91;
+    float:left;
+    width:100%;
+    color:#b4b4b4;
+    margin:10px 0 30px;
+    padding:0 0 0 20px;
+}
+blockquote,
+blockquote p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    text-align: center;
+    font-size: 18px;
+    line-height: 31px;
+}
+blockquote:before{
+    background: #fff;
+    color: #111;
+    content: "\f10d";
+    font-family: FontAwesome;
+    font-size: 20px;
+    font-style: normal;
+    left: 50%;
+    margin-left: -10px;
+    padding: 0 10px;
+    position: absolute;
+    top: -15px;
+}
+blockquote span,
+blockquote cite {
+    display: table;
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 1px;
+    margin: 10px auto 0;
+    text-transform: uppercase;
+}
+.ul {
+    color: #525150;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    list-style: outside none none;
+    margin: 20px 0 30px;
+    padding: 0;
+}
+ul li {
+    line-height: 25px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+ul li:last-child{margin:0}
+ul li:before{
+    background: #111;
+    content: "";
+    height: 6px;
+    left: 0;
+    position: absolute;
+    top: 12px;
+    width: 6px;
+}
+.alignnone {
+    margin: 5px 20px 20px 0;
+}
+.aligncenter,
+div.aligncenter {
+    display: block;
+    margin: 20px auto 20px auto;
+}
+
+.alignright {
+    float:right;
+    margin: 20px 0 20px 20px;
+}
+
+.alignleft {
+    float: left;
+    margin: 20px 20px 20px 0;
+}
+
+a img.alignright {
+    float: right;
+    margin: 20px 0 20px 20px;
+}
+
+a img.alignnone {
+    margin: 20px 20px 20px 0;
+}
+
+a img.alignleft {
+    float: left;
+    margin: 20px 20px 20px 0;
+}
+
+a img.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.gallery-caption,
+.wp-caption {
+    max-width: 100%;
+    text-align: center;
+	box-sizing:border-box;
+}
+.wp-caption.alignnone {
+    margin: 20px 20px 20px 0;
+}
+
+.wp-caption.alignleft {
+    margin: 20px 20px 20px 0;
+}
+
+.wp-caption.alignright {
+    margin: 20px 0 20px 20px;
+}
+.wp-caption img {
+    border: 0 none;
+    height: auto;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: auto;
+}
+.wp-caption p.wp-caption-text {
+    font-size: 16px;
+	font-style:italic;
+	color:#888;
+    line-height: 17px;
+    margin: 8px 0 0;
+}
